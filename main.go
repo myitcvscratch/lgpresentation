@@ -25,6 +25,9 @@ type Program struct {
 var (
 	//go:embed schema.cue
 	schema []byte
+
+	//go:embed defaults.cue
+	defaults []byte
 )
 
 func main() {
@@ -32,7 +35,7 @@ func main() {
 	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
 
 	var conf Config
-	if err := cueconfig.Load(cfpath, schema, nil, nil, &conf); err != nil {
+	if err := cueconfig.Load(cfpath, schema, defaults, nil, &conf); err != nil {
 		log.Fatal(err)
 	}
 
