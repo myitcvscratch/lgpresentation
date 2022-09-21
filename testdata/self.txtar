@@ -1,4 +1,5 @@
 cd $DEMO
+exec cue vet .
 exec demo
 cmp stdout $WORK/stdout.golden
 

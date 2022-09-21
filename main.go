@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"log"
 	"path/filepath"
 
@@ -21,12 +22,17 @@ type Program struct {
 	Directory    string   `json:"directory"`
 }
 
+var (
+	//go:embed schema.cue
+	schema []byte
+)
+
 func main() {
 	// Use a fake "$HOME" for the purposes of this demo
 	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
 
 	var conf Config
-	if err := cueconfig.Load(cfpath, nil, nil, nil, &conf); err != nil {
+	if err := cueconfig.Load(cfpath, schema, nil, nil, &conf); err != nil {
 		log.Fatal(err)
 	}
 
