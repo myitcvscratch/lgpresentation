@@ -1,0 +1,33 @@
+cd $DEMO
+exec demo
+cmp stdout $WORK/stdout.golden
+
+-- stdout.golden --
+main.Config{
+    Programs: {
+        "service1": {
+            Path:         "/path/to/service1",
+            Args:         {"hello", "world"},
+            Description:  "service1 is a special service\nfor special things",
+            Retries:      0,
+            IgnoreErrors: true,
+            Directory:    "/tmp",
+        },
+        "service2": {
+            Path:         "/path/to/service2",
+            Args:         {"hello", "world"},
+            Description:  "service2 is a special service\nfor special things",
+            Retries:      0,
+            IgnoreErrors: false,
+            Directory:    "/home/cueckoo",
+        },
+        "service3": {
+            Path:         "/path/to/service3",
+            Args:         nil,
+            Description:  "service3 is a special service\nfor special things",
+            Retries:      0,
+            IgnoreErrors: false,
+            Directory:    "/home/cueckoo",
+        },
+    },
+}
