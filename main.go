@@ -1,11 +1,10 @@
 package main
 
 import (
-	"encoding/json"
 	"log"
-	"os"
 	"path/filepath"
 
+	"github.com/cue-exp/cueconfig"
 	"github.com/kr/pretty"
 )
 
@@ -24,15 +23,10 @@ type Program struct {
 
 func main() {
 	// Use a fake "$HOME" for the purposes of this demo
-	cfpath := filepath.Join("home", ".config", "demo", "config.json")
-
-	cf, err := os.ReadFile(cfpath)
-	if err != nil {
-		log.Fatal(err)
-	}
+	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
 
 	var conf Config
-	if err := json.Unmarshal(cf, &conf); err != nil {
+	if err := cueconfig.Load(cfpath, nil, nil, nil, &conf); err != nil {
 		log.Fatal(err)
 	}
 
