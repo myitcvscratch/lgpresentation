@@ -20,7 +20,7 @@ main.Config{
             Description:  "service2 is a special service\nfor special things",
             Retries:      3,
             IgnoreErrors: false,
-            Directory:    "/home/cueckoo",
+            Directory:    "/runtime/blah",
         },
         "service3": {
             Path:         "/path/to/service3",
@@ -28,7 +28,7 @@ main.Config{
             Description:  "service3 is a special service\nfor special things",
             Retries:      3,
             IgnoreErrors: false,
-            Directory:    "/home/cueckoo",
+            Directory:    "/runtime/blah",
         },
     },
 }

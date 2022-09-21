@@ -34,8 +34,14 @@ func main() {
 	// Use a fake "$HOME" for the purposes of this demo
 	cfpath := filepath.Join("home", ".config", "demo", "config.cue")
 
+	r := map[string]any{
+		"runtime": map[string]any{
+			"workingDirectory": "/runtime/blah",
+		},
+	}
+
 	var conf Config
-	if err := cueconfig.Load(cfpath, schema, defaults, nil, &conf); err != nil {
+	if err := cueconfig.Load(cfpath, schema, defaults, r, &conf); err != nil {
 		log.Fatal(err)
 	}
 

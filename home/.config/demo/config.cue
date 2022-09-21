@@ -1,7 +1,7 @@
 import "strings"
 
 programs: [_name=string]: {
-	directory:   *"/home/cueckoo" | _
+	directory:   *runtime.workingDirectory | _
 	path:        *"/path/to/\(_name)" | _
 	description: strings.HasPrefix(_name)
 }
@@ -32,3 +32,5 @@ programs: {
 			"""
 	}
 }
+
+runtime: _

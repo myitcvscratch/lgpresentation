@@ -10,3 +10,9 @@ programs: [string]: #Program
 	ignoreErrors?: bool
 	directory?:    string
 }
+
+runtime: #Runtime
+
+#Runtime: {
+	workingDirectory?: string
+}
